@@ -3,6 +3,8 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { eventsRouter } from "./routes/eventsRoutes";
+import { venuesRouter } from "./routes/venuesRoutes";
+import { authRouter } from "./routes/authRoutes";
 
 export const app = express();
 
@@ -23,3 +25,5 @@ app.get("/db-health", async (_req, res) => {
 });
 
 app.use("/events", eventsRouter);
+app.use("/venues", venuesRouter);
+app.use("/auth", authRouter);
