@@ -5,6 +5,8 @@ import morgan from "morgan";
 import { eventsRouter } from "./routes/eventsRoutes";
 import { venuesRouter } from "./routes/venuesRoutes";
 import { authRouter } from "./routes/authRoutes";
+import { usersRouter } from "./routes/usersRoutes";
+import { bookingsRouter } from "./routes/bookingsRoutes";
 
 export const app = express();
 
@@ -27,3 +29,5 @@ app.get("/db-health", async (_req, res) => {
 app.use("/events", eventsRouter);
 app.use("/venues", venuesRouter);
 app.use("/auth", authRouter);
+app.use("/users", usersRouter);
+app.use("/bookings", bookingsRouter);
