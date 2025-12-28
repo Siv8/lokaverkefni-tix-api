@@ -23,18 +23,21 @@ async function seedBase() {
     -- id 1: future (>24h)
     -- id 2: future (>24h)
     -- id 3: within 24h (edge case for cancel)
+    -- id 4: past
     INSERT INTO events (title, description, starts_at, venue_id, category_id)
     VALUES
       ('Dæmi event', 'Test event', NOW() + INTERVAL '3 days', 1, 1),
       ('Ódýrari event', 'Cheap', NOW() + INTERVAL '10 days', 1, 1),
-      ('Seint að cancela', 'Too late', NOW() + INTERVAL '2 hours', 1, 1);
+      ('Seint að cancela', 'Too late', NOW() + INTERVAL '2 hours', 1, 1),
+      ('Liðinn viðburður', 'Past event', NOW() - INTERVAL '1 hour', 1, 1);
 
     -- tickets
     INSERT INTO tickets (event_id, name, price_isk, quantity_total)
     VALUES
       (1, 'General Admission', 9900, 200),
       (2, 'General Admission', 5000, 100),
-      (3, 'General Admission', 7000, 50);
+      (3, 'General Admission', 7000, 50),
+        (4, 'General Admission', 3000, 50);
   `);
 }
 beforeAll(async () => {
