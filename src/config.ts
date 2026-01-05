@@ -18,5 +18,11 @@ export const config = {
 };
 
 if (!config.jwtSecret) {
-  console.warn("WARNING: JWT_SECRET is not set (needed when you implement auth)");
+  if (config.nodeEnv === "production") {
+    throw new Error("JWT_SECRET must be set in production environment");
+  }
+
+  console.warn(
+    "WARNING: JWT_SECRET is not set. Authentication will not work correctly. Set JWT_SECRET in your .env file."
+  );
 }
